@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="icon" href="./assets/images/icon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <h1>To Do List</h1>
+    <form id="addItem">
+      <input type="text" id="newItem" placeholder="What do you need to do?" />
+      <input class="button" type="submit" value="Add" />
+    </form>
+    <div id="wrapper">
+        <div id="container"></div>
+        <button id="removeAll" class="button">Remove all</button>
+    </div>
+    
+
+    <script id="todoItem" type="text/x-handlebars-template">
+      {{#if this}}
+        {{#each this}}
+          <article id="{{this.id}}" class="items">
+            {{#if this.isDone}}
+              <div class="text done">
+                {{this.content}}
+              </div>
+            {{else}}
+              <div class="text notDone">
+                {{this.content}}
+              </div>
+            {{/if}}
+            <img class="bin" src="./assets/images/bin.png" alt="delete item" />
+            <div class="underline"></div>
+          </article>
+        {{/each}}
+      {{/if}}
+    </script>
+
+    <script src="./node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="./TaskService.js"></script>
+    <script src="./TaskController.js"></script>
+  </body>
+</html>
