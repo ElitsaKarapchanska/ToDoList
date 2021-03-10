@@ -73,7 +73,7 @@ input.button {
   padding: 10px;
   background-color: #e8eaf6;
   border-radius: 5px;
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 

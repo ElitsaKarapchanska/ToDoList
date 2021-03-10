@@ -11,15 +11,17 @@
   });
 
   function switchContainerContent() {
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    let tasks = taskStorage.tasks;
+    
     if (tasks.length === 0) {
       wrapper.style.display = "none";
+    } else {
+      wrapper.style.display = "flex";
     }
     const source = document.getElementById("todoItem").innerHTML;
     const template = Handlebars.compile(source);
 
     const html = template(tasks);
-
     container.innerHTML = html;
 
     let allTasks = document.querySelectorAll(".text");
@@ -52,9 +54,8 @@
 
     if (submittedItem.trim().length > 0) {
       taskStorage.createNewTask(submittedItem);
-      switchContainerContent(tasks);
-
-      wrapper.style.display = "block";
+      switchContainerContent();
+      wrapper.style.display = "flex";
     }
 
     event.target[0].value = "";
